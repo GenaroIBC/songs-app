@@ -1,5 +1,4 @@
 import React from "react";
-
 import { FaFemale, FaMale } from "react-icons/fa";
 
 export function ArtistCard({
@@ -13,25 +12,28 @@ export function ArtistCard({
   strGenre,
   strWebsite,
 }) {
-  console.log(strWebsite);
   return (
-    <>
-      <figure>
-        <img src={strArtistThumb} />
-        <figcaption>{strArtist}</figcaption>
+    <article className="bg-secondary col-6 p-3">
+      <figure className="max-w-100">
+        <img className="w-100 rounded" src={strArtistThumb} />
+        <figcaption className="fs-1">{strArtist}</figcaption>
       </figure>
-      <p>{strBiographyEN}</p>
-      <p>Country: {strCountry}</p>
-      <p>Genre: {strGenre}</p>
-      <div>{strGender === "Male" ? <FaMale /> : <FaFemale />}</div>
-      <p>
+      <p className="artist__bio">{strBiographyEN}</p>
+      <p className="artist__country">Country: {strCountry}</p>
+      <p className="artist__genre">Genre: {strGenre}</p>
+      <div className="artist__gender">
+        {strGender === "Male" ? <FaMale /> : <FaFemale />}
+      </div>
+      <p className="artist__born-date">
         {intBornYear} - {intDiedYear ? intDiedYear : "present"}
       </p>
       {strWebsite ? (
-        <p>
-          <a href={strWebsite}>Web site</a>
+        <p className="artist__web">
+          <a className="artist__web__link" href={strWebsite}>
+            Web site
+          </a>
         </p>
       ) : null}
-    </>
+    </article>
   );
 }
